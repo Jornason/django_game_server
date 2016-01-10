@@ -1,0 +1,4 @@
+/game/migrations/
+/log/
+*.pyc
+.idea/
