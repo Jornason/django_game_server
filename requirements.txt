@@ -1,0 +1,5 @@
+uwsgidecorators
+django
+uwsgi
+ujson
+mysql-python
