@@ -5,7 +5,7 @@
 ## 环境配置
 
 服务器框架Nginx + Superviosr + uWsgi + gevent + docker
-![框架](https://raw.githubusercontent.com/ST9527/django_game_server/master/docs/框架.png)
+![框架](https://raw.githubusercontent.com/ST9527/django_game_server/master/docs/%E6%A1%86%E6%9E%B6.png)
 
 
 - 为什么选择[uwsgi＋gevent](http://blog.kgriffs.com/2012/12/18/uwsgi-vs-gunicorn-vs-node-benchmarks.html)
@@ -30,7 +30,7 @@ def change_code_gracefully_reload(sig):
 ## 框架模型
 
 逻辑模型
-![逻辑模型](https://raw.githubusercontent.com/ST9527/django_game_server/master/docs/模型.png)
+![逻辑模型](https://raw.githubusercontent.com/ST9527/django_game_server/master/docs/%E6%A8%A1%E5%9E%8B.png)
 
 - 通过在APP目录下新建`models`文件夹，在`__init__.py`里面导入，实现models的解耦。
 - 游戏指令前两个字段表示指令所在模块，到了具体模块之后再通过具体的指令解析出具体的操作函数
