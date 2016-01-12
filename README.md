@@ -1,5 +1,7 @@
 #  基于Django的游戏服务端框架
-
+Author | Email
+------------ | -------------
+shutong9527 | st9527.cs229@gmail.com
 说明：此后端框架适合中小型，H5游戏。
 
 ## 环境配置
@@ -34,4 +36,68 @@ def change_code_gracefully_reload(sig):
 
 - 通过在APP目录下新建`models`文件夹，在`__init__.py`里面导入，实现models的解耦。
 - 游戏指令前两个字段表示指令所在模块，到了具体模块之后再通过具体的指令解析出具体的操作函数
+- 日志系统(settings.py)
+
+``` python
+# about logging refer to : https://docs.djangoproject.com/en/1.9/topics/logging/
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(levelname)s] [%(asctime)s] [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': "[%(levelname)s] [%(asctime)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+    },
+    'handlers': {
+        'debug': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'log/django/debug.log',
+            'formatter': 'verbose'
+        },
+        'info': {
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': 'log/game/info.log',
+            'formatter': 'simple',
+            # 每天备份一次，备份20天内的日志
+            'when': "D",
+            'interval': 1,
+            "backupCount": 20,
+            "encoding": "utf8"
+        },
+        'error': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': 'log/game/error.log',
+            'formatter': 'verbose',
+            'when': "D",
+            'interval': 1,
+            "backupCount": 20,
+            "encoding": "utf8"
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['debug'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'game': {
+            'handlers': ['info', 'error'],
+            'level': 'INFO',
+        },
+    }
+}
+```
+
+
+## 说明
+
+代码做提供思路只用，具体按实际项目进行设计。
 
