@@ -97,7 +97,7 @@ LOGGING = {
 ```
 
 
-## 说明
+## 补充说明
 
 - 代码做提供思路只用，具体按实际项目进行设计。
 - 项目应用步骤：
@@ -107,3 +107,5 @@ LOGGING = {
 	3. 安装依赖 `pip install -r requirements.txt`
 	4. 根据具体项目，修改`urls.py` 和新建app（参考`game`）。
 
+- 关于Redis作为Django缓存有两个库，[django-redis](http://niwinz.github.io/django-redis/latest/)和[django-redis-cache](http://django-redis-cache.readthedocs.org/en/latest/)，关于两者的区别笔者没有找到很好的文章，只搜到[StackOverFlow的一篇文章](http://stackoverflow.com/questions/21932097/difference-between-django-redis-cache-and-django-redis-for-redis-caching-with-dj)。笔者看了两个库的文档，决定用的是[django-redis](http://niwinz.github.io/django-redis/latest/)（功能越多越好原则 :) ）
+s
