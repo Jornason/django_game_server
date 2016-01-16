@@ -13,6 +13,7 @@ def check_log():
     log_path = project_path + "/log"
     django_log_path = log_path + '/django'
     game_log_path = log_path + '/game'
+    redis_log_path = log_path + '/redis'
 
     # 检查日志文件夹是否存在
     if not os.path.exists(log_path):
@@ -21,6 +22,8 @@ def check_log():
         os.mkdir(django_log_path)
     if not os.path.exists(game_log_path):
         os.mkdir(game_log_path)
+    if not os.path.exists(redis_log_path):
+        os.mkdir(redis_log_path)
 
 
 if __name__ == "__main__":

@@ -17,4 +17,5 @@ file_path = project_path + '/project.conf'
 config_parser.read(file_path)
 
 DB_CONFIG = dict(config_parser.items("db"))
+REDIS_CONFIG = dict(config_parser.items("redis"))
 

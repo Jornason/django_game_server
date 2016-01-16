@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from configs import DB_CONFIG
+from configs import DB_CONFIG, REDIS_CONFIG
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -167,6 +167,16 @@ LOGGING = {
             "backupCount": 20,
             "encoding": "utf8"
         },
+        'redis_error': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': 'log/redis/error.log',
+            'formatter': 'verbose',
+            'when': "D",
+            'interval': 1,
+            "backupCount": 20,
+            "encoding": "utf8"
+        },
     },
     'loggers': {
         'django': {
@@ -178,5 +188,27 @@ LOGGING = {
             'handlers': ['info', 'error'],
             'level': 'INFO',
         },
+        'redis': {
+            'handlers': ['redis_error'],
+            'level': 'ERROR'
+        }
     }
 }
+
+# redis config
+# refer to : http://niwinz.github.io/django-redis/latest/
+# configure as cache backend
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": REDIS_CONFIG['location'],
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "DJANGO_REDIS_IGNORE_EXCEPTIONS": 'redis'
+        }
+    }
+}
+
+# configure as session backend
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"

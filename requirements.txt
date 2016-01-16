@@ -3,3 +3,5 @@ django
 uwsgi
 ujson
 mysql-python
+redis
+django-redis
