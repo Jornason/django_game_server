@@ -7,8 +7,7 @@ shutong9527 | st9527.cs229@gmail.com
 ## 环境配置
 
 服务器框架Nginx + Superviosr + uWsgi + gevent + docker
-![框架](https://raw.githubusercontent.com/ST9527/django_game_server/master/docs/%E6%A1%86%E6%9E%B6.png)
-
+![框架](http://o6p181fdf.bkt.clouddn.com/16-5-7/805876.jpg)
 
 - 为什么选择[uwsgi＋gevent](http://blog.kgriffs.com/2012/12/18/uwsgi-vs-gunicorn-vs-node-benchmarks.html)
 - git hook 实现代码更新自动部署
@@ -32,7 +31,7 @@ def change_code_gracefully_reload(sig):
 ## 框架模型
 
 逻辑模型
-![逻辑模型](https://raw.githubusercontent.com/ST9527/django_game_server/master/docs/%E6%A8%A1%E5%9E%8B.png)
+![逻辑模型](http://o6p181fdf.bkt.clouddn.com/16-5-7/98436669.jpg)
 
 - 通过在APP目录下新建`models`文件夹，在`__init__.py`里面导入，实现models的解耦。
 - 游戏指令前两个字段表示指令所在模块，到了具体模块之后再通过具体的指令解析出具体的操作函数
@@ -108,4 +107,3 @@ LOGGING = {
 	4. 根据具体项目，修改`urls.py` 和新建app（参考`game`）。
 
 - 关于Redis作为Django缓存有两个库，[django-redis](http://niwinz.github.io/django-redis/latest/)和[django-redis-cache](http://django-redis-cache.readthedocs.org/en/latest/)，关于两者的区别笔者没有找到很好的文章，只搜到[StackOverFlow的一篇文章](http://stackoverflow.com/questions/21932097/difference-between-django-redis-cache-and-django-redis-for-redis-caching-with-dj)。笔者看了两个库的文档，决定用的是[django-redis](http://niwinz.github.io/django-redis/latest/)（功能越多越好原则 :) ）
-s
